@@ -2,55 +2,54 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WILLY MAGUSIB // BOOST PROTOCOL</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>My Personal portfolio</title>
+  <meta name="description" content="Professional Facebook page boosting by Willy Magusib. Real growth, stealth mode, high engagement.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@500;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --neon: #00ff41;
-      --neon-dim: #00cc33;
-      --neon-glow: #00ff4180;
-      --bg: #0a0a0a;
-      --text: #c0ffc0;
-      --danger: #ff003c;
-      --cyan: #00f0ff;
+      --neon-soft: rgba(0, 255, 65, 0.12);
+      --neon-glow: rgba(0, 255, 65, 0.4);
+      --bg: #050505;
+      --bg-card: rgba(8, 20, 12, 0.82);
+      --bg-card-hover: rgba(10, 28, 16, 0.9);
+      --text: #e0ffe0;
+      --text-muted: #8fbf8f;
+      --cyan: #00e5ff;
+      --border: rgba(0, 255, 65, 0.2);
+      --radius: 14px;
+      --shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
     body {
       background: var(--bg);
       color: var(--text);
-      font-family: 'Share Tech Mono', monospace;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       overflow-x: hidden;
-      min-height: 100vh;
-      line-height: 1.6;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
     }
 
     #matrix {
       position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
+      inset: 0;
       z-index: 0;
-      opacity: 0.15;
+      opacity: 0.1;
       pointer-events: none;
     }
 
-    body::before {
+    body::after {
       content: '';
       position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: repeating-linear-gradient(
-        0deg,
-        transparent,
-        transparent 2px,
-        rgba(0, 255, 65, 0.03) 2px,
-        rgba(0, 255, 65, 0.03) 4px
-      );
-      z-index: 9999;
+      inset: 0;
+      background: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,255,65,0.012) 3px, rgba(0,255,65,0.012) 6px);
+      z-index: 9998;
       pointer-events: none;
     }
 
@@ -62,193 +61,158 @@
       padding: 0 20px;
     }
 
+    .fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 20px 0;
-      border-bottom: 1px solid var(--neon-dim);
-      margin-bottom: 40px;
+      padding: 15px 0;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: rgba(5, 5, 5, 0.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      z-index: 100;
     }
-
     .logo {
       font-family: 'Orbitron', sans-serif;
       font-weight: 900;
-      font-size: 1.4rem;
+      font-size: 1.2rem;
       color: var(--neon);
-      text-shadow: 0 0 10px var(--neon-glow);
-      letter-spacing: 3px;
+      letter-spacing: 2px;
+      text-shadow: 0 0 20px var(--neon-glow);
     }
     .logo span { color: var(--cyan); }
-
-    .nav-links { display: flex; gap: 25px; flex-wrap: wrap; }
+    .nav-links { display: flex; gap: 18px; flex-wrap: wrap; }
     .nav-links a {
-      color: var(--text);
+      font-family: 'Share Tech Mono', monospace;
+      color: var(--text-muted);
       text-decoration: none;
-      font-size: 0.9rem;
+      font-size: 0.78rem;
       letter-spacing: 1px;
-      transition: all 0.3s;
-      position: relative;
+      transition: color 0.25s;
     }
-    .nav-links a:hover {
+    .nav-links a:hover { color: var(--neon); }
+    .nav-cta {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.76rem;
+      padding: 8px 16px;
+      border: 1px solid var(--neon);
       color: var(--neon);
-      text-shadow: 0 0 8px var(--neon);
+      text-decoration: none;
+      border-radius: 8px;
+      transition: all 0.3s;
+      white-space: nowrap;
     }
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: -4px; left: 0;
-      width: 0; height: 1px;
+    .nav-cta:hover {
       background: var(--neon);
-      transition: width 0.3s;
+      color: #000;
+      box-shadow: 0 0 24px var(--neon-glow);
     }
-    .nav-links a:hover::after { width: 100%; }
 
     .hero {
       text-align: center;
-      padding: 60px 0 80px;
+      padding: 70px 0 90px;
     }
-
-    .terminal-header {
-      display: inline-block;
-      background: #0d0d0d;
-      border: 1px solid var(--neon-dim);
-      border-radius: 8px 8px 0 0;
-      padding: 8px 16px;
-      font-size: 0.8rem;
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--neon-soft);
+      border: 1px solid var(--border);
+      padding: 7px 16px;
+      border-radius: 40px;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.74rem;
       color: var(--neon);
-      margin-bottom: -1px;
+      margin-bottom: 26px;
+      letter-spacing: 1.2px;
     }
-
-    .terminal-box {
-      background: rgba(0, 20, 0, 0.85);
-      border: 1px solid var(--neon-dim);
-      border-radius: 0 8px 8px 8px;
-      padding: 40px 30px;
-      max-width: 800px;
-      margin: 0 auto;
-      box-shadow: 0 0 30px rgba(0, 255, 65, 0.15),
-                  inset 0 0 40px rgba(0, 255, 65, 0.05);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .terminal-box::before {
+    .badge::before {
       content: '';
-      position: absolute;
-      top: 0; left: -100%;
-      width: 50%; height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(0, 255, 65, 0.08), transparent);
-      animation: scan 4s infinite;
+      width: 7px; height: 7px;
+      background: var(--neon);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--neon);
+      animation: pulse 1.5s infinite;
     }
-    @keyframes scan {
-      0% { left: -100%; }
-      100% { left: 200%; }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
     }
-
-    .glitch {
+    .hero h1 {
       font-family: 'Orbitron', sans-serif;
-      font-size: clamp(2.2rem, 6vw, 3.8rem);
+      font-size: clamp(2.1rem, 7vw, 3.7rem);
       font-weight: 900;
       color: var(--neon);
-      text-shadow: 0 0 10px var(--neon), 0 0 30px var(--neon-glow);
-      letter-spacing: 4px;
-      position: relative;
-      display: inline-block;
-      margin-bottom: 10px;
-    }
-    .glitch::before,
-    .glitch::after {
-      content: attr(data-text);
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-    }
-    .glitch::before {
-      color: var(--cyan);
-      animation: glitch1 2.5s infinite;
-      clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
-      transform: translate(-2px, -1px);
-    }
-    .glitch::after {
-      color: var(--danger);
-      animation: glitch2 2.5s infinite;
-      clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
-      transform: translate(2px, 1px);
-    }
-    @keyframes glitch1 {
-      0%, 100% { transform: translate(0); }
-      20% { transform: translate(-3px, 1px); }
-      40% { transform: translate(3px, -1px); }
-      60% { transform: translate(-2px, 2px); }
-      80% { transform: translate(2px, -2px); }
-    }
-    @keyframes glitch2 {
-      0%, 100% { transform: translate(0); }
-      20% { transform: translate(3px, -1px); }
-      40% { transform: translate(-3px, 1px); }
-      60% { transform: translate(2px, -2px); }
-      80% { transform: translate(-2px, 2px); }
-    }
-
-    .tagline {
-      font-size: 1.1rem;
-      color: var(--cyan);
-      margin: 15px 0 25px;
       letter-spacing: 2px;
+      line-height: 1.12;
+      text-shadow: 0 0 40px var(--neon-glow);
+      margin-bottom: 12px;
     }
-
-    .typing {
-      overflow: hidden;
-      white-space: nowrap;
-      border-right: 2px solid var(--neon);
-      animation: typing 3.5s steps(40) 1s 1 normal both,
-                 blink 0.7s step-end infinite;
-      display: inline-block;
-      max-width: 100%;
+    .hero .subtitle {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: clamp(0.9rem, 2.8vw, 1.05rem);
+      color: var(--cyan);
+      letter-spacing: 2.5px;
+      margin-bottom: 16px;
     }
-    @keyframes typing {
-      from { width: 0; }
-      to { width: 100%; }
+    .hero .desc {
+      max-width: 520px;
+      margin: 0 auto 30px;
+      color: var(--text-muted);
+      font-size: 0.96rem;
     }
-    @keyframes blink {
-      50% { border-color: transparent; }
-    }
-
-    .status {
+    .hero-stats {
       display: flex;
       justify-content: center;
-      gap: 20px;
+      gap: 28px;
       flex-wrap: wrap;
-      margin: 25px 0;
-      font-size: 0.85rem;
+      margin-bottom: 36px;
     }
-    .status-item {
-      background: rgba(0, 255, 65, 0.08);
-      border: 1px solid var(--neon-dim);
-      padding: 6px 14px;
-      border-radius: 4px;
+    .stat { text-align: center; min-width: 95px; }
+    .stat .num {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(1.35rem, 4vw, 1.7rem);
+      font-weight: 700;
+      color: var(--neon);
+      display: block;
     }
-    .status-item span { color: var(--neon); }
+    .stat .label {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+    }
 
     .btn-group {
       display: flex;
-      gap: 15px;
+      gap: 12px;
       justify-content: center;
       flex-wrap: wrap;
-      margin-top: 30px;
     }
     .btn {
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.95rem;
-      padding: 14px 28px;
+      font-size: 0.85rem;
+      padding: 13px 24px;
       border: 1px solid var(--neon);
       background: transparent;
       color: var(--neon);
       cursor: pointer;
       text-decoration: none;
-      letter-spacing: 2px;
-      transition: all 0.3s;
+      letter-spacing: 1.2px;
+      border-radius: 9px;
+      transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
       display: inline-flex;
       align-items: center;
       gap: 8px;
@@ -256,9 +220,18 @@
     .btn:hover {
       background: var(--neon);
       color: #000;
-      box-shadow: 0 0 20px var(--neon-glow), 0 0 40px var(--neon-glow);
+      box-shadow: 0 0 32px var(--neon-glow);
+      transform: translateY(-3px);
     }
-    .btn-primary { background: rgba(0, 255, 65, 0.15); }
+    .btn-solid {
+      background: var(--neon);
+      color: #000;
+      font-weight: 600;
+    }
+    .btn-solid:hover {
+      background: #00e83c;
+      box-shadow: 0 0 40px var(--neon-glow);
+    }
     .btn-cyan {
       border-color: var(--cyan);
       color: var(--cyan);
@@ -266,145 +239,150 @@
     .btn-cyan:hover {
       background: var(--cyan);
       color: #000;
-      box-shadow: 0 0 20px rgba(0, 240, 255, 0.5);
-    }
-    .btn-danger {
-      border-color: var(--danger);
-      color: var(--danger);
-    }
-    .btn-danger:hover {
-      background: var(--danger);
-      color: #000;
-      box-shadow: 0 0 20px rgba(255, 0, 60, 0.5);
+      box-shadow: 0 0 28px rgba(0, 229, 255, 0.45);
     }
 
-    section { padding: 70px 0; }
-
-    .section-title {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 1.6rem;
-      color: var(--neon);
-      margin-bottom: 30px;
-      letter-spacing: 3px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
+    section { padding: 75px 0; }
+    .section-header {
+      text-align: center;
+      margin-bottom: 44px;
     }
-    .section-title::before {
-      content: '>';
+    .section-header .eyebrow {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.76rem;
       color: var(--cyan);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .section-header h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(1.4rem, 4vw, 1.95rem);
+      color: var(--neon);
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+    }
+    .section-header p {
+      color: var(--text-muted);
+      max-width: 460px;
+      margin: 0 auto;
+      font-size: 0.92rem;
     }
 
     .profile-card {
       display: grid;
       grid-template-columns: 180px 1fr;
-      gap: 30px;
-      background: rgba(0, 20, 0, 0.7);
-      border: 1px solid var(--neon-dim);
-      padding: 30px;
-      border-radius: 8px;
-      box-shadow: 0 0 25px rgba(0, 255, 65, 0.1);
+      gap: 36px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 36px;
+      box-shadow: var(--shadow);
+      transition: border-color 0.3s;
     }
-
+    .profile-card:hover { border-color: rgba(0,255,65,0.4); }
+    .avatar-wrap { text-align: center; }
     .avatar {
-      width: 180px;
-      height: 180px;
+      width: 160px; height: 160px;
       border: 2px solid var(--neon);
-      border-radius: 8px;
+      border-radius: 16px;
       overflow: hidden;
       position: relative;
       background: #001a00;
+      margin: 0 auto 12px;
+      box-shadow: 0 0 35px rgba(0,255,65,0.18);
     }
-    .avatar img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
+    .avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .avatar::after {
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(transparent 50%, rgba(0, 255, 65, 0.12) 50%);
+      background: linear-gradient(transparent 50%, rgba(0,255,65,0.1) 50%);
       background-size: 100% 4px;
-      animation: scanline 3s linear infinite;
+      animation: scanline 2.6s linear infinite;
       pointer-events: none;
     }
     @keyframes scanline {
       0% { background-position: 0 0; }
       100% { background-position: 0 100%; }
     }
-
+    .status-online {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--neon);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+    .status-online::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--neon);
+      border-radius: 50%;
+      box-shadow: 0 0 6px var(--neon);
+    }
     .profile-info h2 {
       font-family: 'Orbitron', sans-serif;
+      font-size: 1.55rem;
       color: var(--neon);
-      font-size: 1.8rem;
-      margin-bottom: 5px;
+      margin-bottom: 4px;
     }
     .profile-info .role {
+      font-family: 'Share Tech Mono', monospace;
       color: var(--cyan);
-      font-size: 0.95rem;
-      margin-bottom: 15px;
+      font-size: 0.85rem;
       letter-spacing: 1px;
+      margin-bottom: 14px;
     }
     .profile-info p {
-      color: var(--text);
+      color: var(--text-muted);
+      font-size: 0.93rem;
       margin-bottom: 12px;
-      font-size: 0.95rem;
     }
-    .profile-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 15px;
-    }
+    .highlight { color: var(--neon); font-weight: 500; }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0; }
     .tag {
-      background: rgba(0, 255, 65, 0.1);
-      border: 1px solid var(--neon-dim);
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.7rem;
+      background: var(--neon-soft);
+      border: 1px solid var(--border);
       color: var(--neon);
-      padding: 4px 12px;
-      font-size: 0.8rem;
-      border-radius: 3px;
+      padding: 5px 12px;
+      border-radius: 6px;
     }
-
-    .social-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 18px;
-    }
-    .social-links a {
-      font-size: 0.85rem;
+    .social-row { display: flex; flex-wrap: wrap; gap: 10px; }
+    .social-row a {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.78rem;
       color: var(--cyan);
       text-decoration: none;
-      border: 1px solid var(--cyan);
-      padding: 6px 14px;
-      border-radius: 4px;
-      transition: all 0.3s;
+      border: 1px solid rgba(0,229,255,0.35);
+      padding: 7px 14px;
+      border-radius: 7px;
+      transition: all 0.25s;
     }
-    .social-links a:hover {
-      background: var(--cyan);
-      color: #000;
-    }
+    .social-row a:hover { background: var(--cyan); color: #000; }
 
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 18px;
     }
     .service-card {
-      background: rgba(0, 15, 0, 0.8);
-      border: 1px solid var(--neon-dim);
-      padding: 25px 20px;
-      border-radius: 6px;
-      transition: all 0.3s;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 26px 22px;
+      transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
       position: relative;
       overflow: hidden;
     }
     .service-card:hover {
       border-color: var(--neon);
-      box-shadow: 0 0 20px rgba(0, 255, 65, 0.2);
-      transform: translateY(-4px);
+      background: var(--bg-card-hover);
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(0,255,65,0.12);
     }
     .service-card::before {
       content: '';
@@ -417,107 +395,401 @@
     }
     .service-card:hover::before { opacity: 1; }
     .service-icon {
-      font-size: 1.8rem;
-      margin-bottom: 12px;
+      width: 44px; height: 44px;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--neon-soft);
+      border: 1px solid var(--border);
+      border-radius: 11px;
+      font-size: 1.25rem;
+      margin-bottom: 16px;
       color: var(--neon);
     }
     .service-card h3 {
       font-family: 'Orbitron', sans-serif;
-      font-size: 1.05rem;
+      font-size: 0.92rem;
       color: var(--neon);
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+    .service-card p { font-size: 0.86rem; color: var(--text-muted); }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      counter-reset: step;
+    }
+    .process-step {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 26px 20px;
+      text-align: center;
+      transition: all 0.3s;
+    }
+    .process-step:hover {
+      border-color: var(--neon);
+      transform: translateY(-4px);
+    }
+    .process-step::before {
+      counter-increment: step;
+      content: "0" counter(step);
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--neon);
+      opacity: 0.25;
+      display: block;
       margin-bottom: 10px;
+    }
+    .process-step h4 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.88rem;
+      color: var(--neon);
+      margin-bottom: 8px;
+      letter-spacing: 0.8px;
+    }
+    .process-step p { font-size: 0.84rem; color: var(--text-muted); }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+    .feature {
+      display: flex;
+      gap: 16px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px;
+      transition: all 0.3s;
+    }
+    .feature:hover {
+      border-color: rgba(0,255,65,0.45);
+      background: var(--bg-card-hover);
+    }
+    .feature-icon {
+      flex-shrink: 0;
+      width: 42px; height: 42px;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--neon-soft);
+      border-radius: 10px;
+      color: var(--neon);
+      font-size: 1.15rem;
+    }
+    .feature h4 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.86rem;
+      color: var(--neon);
+      margin-bottom: 4px;
+      letter-spacing: 0.5px;
+    }
+    .feature p { font-size: 0.84rem; color: var(--text-muted); }
+
+    .packages-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .package {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px 24px;
+      text-align: center;
+      transition: all 0.35s;
+      position: relative;
+    }
+    .package:hover {
+      border-color: var(--neon);
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(0,255,65,0.12);
+    }
+    .package.featured {
+      border-color: var(--neon);
+      box-shadow: 0 0 40px rgba(0,255,65,0.15);
+    }
+    .package.featured::after {
+      content: 'POPULAR';
+      position: absolute;
+      top: 14px; right: 14px;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.65rem;
+      background: var(--neon);
+      color: #000;
+      padding: 3px 8px;
+      border-radius: 4px;
       letter-spacing: 1px;
     }
-    .service-card p {
-      font-size: 0.9rem;
-      color: var(--text);
-      opacity: 0.9;
+    .package h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.05rem;
+      color: var(--neon);
+      margin-bottom: 8px;
+      letter-spacing: 1px;
+    }
+    .package .price {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.5rem;
+      color: var(--cyan);
+      margin-bottom: 6px;
+    }
+    .package .price span {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+    .package .desc {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      margin-bottom: 18px;
+    }
+    .package ul {
+      list-style: none;
+      text-align: left;
+      margin-bottom: 24px;
+    }
+    .package ul li {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      padding: 6px 0;
+      border-bottom: 1px solid rgba(0,255,65,0.08);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .package ul li::before {
+      content: '✓';
+      color: var(--neon);
+      font-weight: 700;
     }
 
     .boost-panel {
-      background: rgba(0, 25, 10, 0.85);
+      background: var(--bg-card);
       border: 1px solid var(--neon);
-      border-radius: 10px;
-      padding: 35px 30px;
+      border-radius: var(--radius);
+      padding: 42px 30px;
       text-align: center;
-      box-shadow: 0 0 30px rgba(0, 255, 65, 0.15);
+      box-shadow: 0 0 40px rgba(0,255,65,0.12);
       position: relative;
       overflow: hidden;
     }
     .boost-panel::before {
       content: '';
       position: absolute;
-      top: 0; left: -100%;
-      width: 60%; height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(0, 255, 65, 0.07), transparent);
+      top: 0; left: -80%;
+      width: 50%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(0,255,65,0.06), transparent);
       animation: scan 5s infinite;
+    }
+    @keyframes scan {
+      0% { left: -80%; }
+      100% { left: 150%; }
     }
     .boost-panel h3 {
       font-family: 'Orbitron', sans-serif;
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       color: var(--neon);
-      margin-bottom: 12px;
       letter-spacing: 2px;
+      margin-bottom: 12px;
     }
     .boost-panel p {
-      margin-bottom: 25px;
-      color: var(--text);
-      max-width: 500px;
-      margin-left: auto;
-      margin-right: auto;
+      color: var(--text-muted);
+      max-width: 480px;
+      margin: 0 auto 26px;
+      font-size: 0.94rem;
     }
 
-    .about-content {
-      background: rgba(0, 15, 0, 0.7);
-      border: 1px solid var(--neon-dim);
-      padding: 30px;
-      border-radius: 8px;
-      font-size: 1rem;
-    }
-    .about-content p { margin-bottom: 15px; }
-    .highlight { color: var(--neon); }
-
-    .cta { text-align: center; padding: 60px 0; }
-    .cta-box {
-      background: linear-gradient(135deg, rgba(0, 40, 0, 0.9), rgba(0, 20, 20, 0.9));
+    .guarantee-box {
+      background: linear-gradient(145deg, rgba(0,32,14,0.9), rgba(0,14,20,0.9));
       border: 1px solid var(--neon);
-      padding: 50px 30px;
+      border-radius: var(--radius);
+      padding: 40px 28px;
+      text-align: center;
+      box-shadow: 0 0 50px rgba(0,255,65,0.1);
+    }
+    .guarantee-box h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.25rem;
+      color: var(--neon);
+      letter-spacing: 1.5px;
+      margin-bottom: 12px;
+    }
+    .guarantee-box p {
+      color: var(--text-muted);
+      max-width: 480px;
+      margin: 0 auto 24px;
+      font-size: 0.93rem;
+    }
+
+    .faq-list { max-width: 700px; margin: 0 auto; }
+    .faq-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
       border-radius: 10px;
-      box-shadow: 0 0 40px rgba(0, 255, 65, 0.15);
+      margin-bottom: 12px;
+      overflow: hidden;
+      transition: border-color 0.3s;
+    }
+    .faq-item:hover { border-color: rgba(0,255,65,0.4); }
+    .faq-q {
+      width: 100%;
+      background: none;
+      border: none;
+      color: var(--neon);
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.88rem;
+      letter-spacing: 0.5px;
+      padding: 18px 20px;
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+    .faq-q span { font-size: 1.2rem; transition: transform 0.3s; }
+    .faq-item.open .faq-q span { transform: rotate(45deg); }
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      padding: 0 20px;
+    }
+    .faq-item.open .faq-a {
+      max-height: 200px;
+      padding: 0 20px 18px;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 18px;
+    }
+    .testimonial {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 26px;
+      position: relative;
+      transition: all 0.3s;
+    }
+    .testimonial:hover {
+      border-color: rgba(0,255,65,0.4);
+      transform: translateY(-3px);
+    }
+    .testimonial::before {
+      content: '"';
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.8rem;
+      color: var(--neon);
+      opacity: 0.18;
+      position: absolute;
+      top: 8px; left: 16px;
+      line-height: 1;
+    }
+    .testimonial p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      position: relative;
+      z-index: 1;
+    }
+    .testimonial .author {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--neon);
+    }
+    .testimonial .author span {
+      color: var(--text-muted);
+      display: block;
+      font-size: 0.72rem;
+      margin-top: 2px;
+    }
+
+    .cta-section { text-align: center; padding: 60px 0 85px; }
+    .cta-box {
+      background: linear-gradient(145deg, rgba(0,36,16,0.95), rgba(0,12,18,0.95));
+      border: 1px solid var(--neon);
+      border-radius: 18px;
+      padding: 52px 28px;
+      box-shadow: 0 0 60px rgba(0,255,65,0.12);
     }
     .cta-box h2 {
       font-family: 'Orbitron', sans-serif;
-      font-size: 1.8rem;
+      font-size: clamp(1.4rem, 4vw, 1.95rem);
       color: var(--neon);
-      margin-bottom: 15px;
       letter-spacing: 2px;
+      margin-bottom: 12px;
     }
-    .cta-box p { margin-bottom: 25px; color: var(--text); }
+    .cta-box p {
+      color: var(--text-muted);
+      margin-bottom: 26px;
+      font-size: 0.95rem;
+    }
 
     footer {
-      border-top: 1px solid var(--neon-dim);
-      padding: 30px 0;
+      border-top: 1px solid var(--border);
+      padding: 28px 0;
       text-align: center;
-      font-size: 0.85rem;
-      color: var(--text);
-      opacity: 0.7;
+      font-size: 0.8rem;
+      color: var(--text-muted);
     }
-    footer a {
-      color: var(--neon);
-      text-decoration: none;
+    footer a { color: var(--neon); text-decoration: none; }
+    footer a:hover { text-shadow: 0 0 10px var(--neon); }
+    footer .links {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
     }
-    footer a:hover { text-shadow: 0 0 8px var(--neon); }
 
-    @media (max-width: 700px) {
+    @media (max-width: 720px) {
+      .container { padding: 0 16px; }
+      nav { padding: 12px 0; }
+      .nav-links { display: none; }
+      .logo { font-size: 1.05rem; }
+      .hero { padding: 45px 0 60px; }
+      .hero-stats { gap: 16px; }
       .profile-card {
         grid-template-columns: 1fr;
         text-align: center;
+        padding: 24px 18px;
+        gap: 20px;
       }
-      .avatar { margin: 0 auto; }
-      .nav-links { gap: 12px; font-size: 0.8rem; }
-      .logo { font-size: 1.1rem; }
-      .btn { padding: 12px 20px; font-size: 0.85rem; }
-      .social-links { justify-content: center; }
+      .avatar { width: 130px; height: 130px; margin: 0 auto 10px; }
+      .social-row, .tags { justify-content: center; }
+      section { padding: 50px 0; }
+      .section-header { margin-bottom: 30px; }
+      .services-grid, .process-grid, .features-grid,
+      .packages-grid, .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+      .btn {
+        width: 100%;
+        max-width: 280px;
+        justify-content: center;
+      }
+      .btn-group { flex-direction: column; align-items: center; }
+      .package.featured::after { top: 12px; right: 12px; }
+      .boost-panel { padding: 32px 20px; }
+    }
+
+    @media (max-width: 400px) {
+      .hero h1 { letter-spacing: 1px; }
+      .stat .num { font-size: 1.2rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+      html { scroll-behavior: auto; }
+      .fade-up { opacity: 1; transform: none; }
     }
   </style>
 </head>
@@ -528,180 +800,359 @@
     <nav>
       <div class="logo">WM<span>_</span>BOOST</div>
       <div class="nav-links">
-        <a href="#profile">PROFILE</a>
-        <a href="#services">SERVICES</a>
-        <a href="#boost">BOOST PANEL</a>
-        <a href="#about">ABOUT</a>
-        <a href="#contact">CONTACT</a>
+        <a href="#services">Services</a>
+        <a href="#process">Process</a>
+        <a href="#packages">Packages</a>
+        <a href="#boost">Boost Panel</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
       </div>
+      <a href="https://www.facebook.com/JOLLIBEE3MASARAP" target="_blank" class="nav-cta">Message Me</a>
     </nav>
 
     <section class="hero">
-      <div class="terminal-header">root@willy-boost:\~$</div>
-      <div class="terminal-box">
-        <h1 class="glitch" data-text="WILLY MAGUSIB">WILLY MAGUSIB</h1>
-        <p class="tagline">// SOCIAL MEDIA BOOST PROTOCOL</p>
-        <p class="typing">Initializing boost sequence... Ready to dominate the algorithm.</p>
-
-        <div class="status">
-          <div class="status-item">STATUS: <span>ONLINE</span></div>
-          <div class="status-item">SERVICE: <span>ACTIVE</span></div>
-          <div class="status-item">MODE: <span>STEALTH BOOST</span></div>
-        </div>
-
-        <div class="btn-group">
-          <a href="https://www.facebook.com/JOLLIBEE3MASARAP" target="_blank" class="btn btn-primary">
-            ▶ MY FACEBOOK
-          </a>
-          <a href="https://www.facebook.com/share/1DK23Vv417/" target="_blank" class="btn btn-cyan">
-            📄 BOOST PAGE
-          </a>
-          <a href="#boost" class="btn btn-danger">
-            ⚡ BOOST PANEL
-          </a>
-        </div>
+      <div class="badge">AVAILABLE FOR NEW CLIENTS</div>
+      <h1 class="fade-up">WILLY MAGUSIB</h1>
+      <p class="subtitle fade-up">// FACEBOOK BOOST SPECIALIST</p>
+      <p class="desc fade-up">
+        Professional page growth with real engagement and stealth strategies.
+        Build authority. Increase reach. Get more clients.
+      </p>
+      <div class="hero-stats fade-up">
+        <div class="stat"><span class="num">500+</span><span class="label">Pages Boosted</span></div>
+        <div class="stat"><span class="num">24/7</span><span class="label">Support</span></div>
+        <div class="stat"><span class="num">100%</span><span class="label">Stealth Mode</span></div>
+      </div>
+      <div class="btn-group fade-up">
+        <a href="https://www.facebook.com/JOLLIBEE3MASARAP" target="_blank" class="btn btn-solid">Get Started</a>
+        <a href="#packages" class="btn">View Packages</a>
+        <a href="#boost" class="btn btn-cyan">Boost Panel</a>
       </div>
     </section>
 
-    <section id="profile">
-      <h2 class="section-title">OPERATOR PROFILE</h2>
+    <section id="profile" class="fade-up">
+      <div class="section-header">
+        <div class="eyebrow">// Operator</div>
+        <h2>About the Specialist</h2>
+        <p>Know who you are working with</p>
+      </div>
       <div class="profile-card">
-        <div class="avatar">
-          <img src="https://i.imgur.com/6VBoxxL.png" alt="Willy Magusib" onerror="this.style.display='none'; this.parentElement.innerHTML='WM';">
+        <div class="avatar-wrap">
+          <div class="avatar">
+            <img src="https://i.imgur.com/FQrMGjL.jpeg" alt="Willy Magusib"
+                 onerror="this.style.display='none';this.parentElement.style.display='flex';this.parentElement.style.alignItems='center';this.parentElement.style.justifyContent='center';this.parentElement.innerHTML='<span style=\'font-family:Orbitron;font-size:2.4rem;color:#00ff41\'>WM</span>';">
+          </div>
+          <div class="status-online">ONLINE NOW</div>
         </div>
         <div class="profile-info">
-          <h2>WILLY MAGUSIB</h2>
-          <div class="role">BOOST SPECIALIST // SOCIAL MEDIA ENGINEER</div>
+          <h2>Willy Magusib</h2>
+          <div class="role">BOOST SPECIALIST · SOCIAL MEDIA ENGINEER</div>
           <p>
-            Expert in organic & strategic page boosting. Turning small pages into high-engagement powerhouses.
-            Specializing in Facebook growth, visibility, and algorithm domination.
+            I help Facebook pages grow with <span class="highlight">strategic and stealth boosting</span>.
+            Focused on real results — higher reach, better engagement, and stronger page presence.
           </p>
           <p>
-            <span class="highlight">Mission:</span> Deliver real results — more reach, more engagement, more authority.
+            Whether you are starting from zero or scaling an existing page,
+            I deliver growth that looks natural and lasts.
           </p>
-          <div class="profile-tags">
+          <div class="tags">
             <span class="tag">FACEBOOK BOOST</span>
             <span class="tag">PAGE GROWTH</span>
             <span class="tag">ENGAGEMENT</span>
             <span class="tag">REACH</span>
             <span class="tag">SMM</span>
           </div>
-
-          <div class="social-links">
-            <a href="https://www.facebook.com/JOLLIBEE3MASARAP" target="_blank">👤 Personal Account</a>
-            <a href="https://www.facebook.com/share/1DK23Vv417/" target="_blank">📄 Boost Page</a>
+          <div class="social-row">
+            <a href="https://www.facebook.com/JOLLIBEE3MASARAP" target="_blank">Personal Account</a>
+            <a href="https://www.facebook.com/share/1DK23Vv417/" target="_blank">Boost Page</a>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="services">
-      <h2 class="section-title">BOOST MODULES</h2>
+    <section id="services" class="fade-up">
+      <div class="section-header">
+        <div class="eyebrow">// Services</div>
+        <h2>Boosting Services</h2>
+        <p>Complete solutions for Facebook page growth</p>
+      </div>
       <div class="services-grid">
         <div class="service-card">
           <div class="service-icon">⬆</div>
-          <h3>PAGE BOOST</h3>
-          <p>Increase page likes, followers, and overall visibility. Make your page stand out in the feed.</p>
+          <h3>PAGE LIKES & FOLLOWERS</h3>
+          <p>Grow your page audience with high-quality likes and followers that look natural and active.</p>
         </div>
         <div class="service-card">
           <div class="service-icon">⚡</div>
           <h3>POST ENGAGEMENT</h3>
-          <p>Boost likes, comments, and shares on specific posts for maximum algorithm favor.</p>
+          <p>Boost likes, comments, shares, and reactions on specific posts for maximum algorithm push.</p>
         </div>
         <div class="service-card">
           <div class="service-icon">👁</div>
-          <h3>REACH & VIEWS</h3>
-          <p>Expand your content reach. Get more eyes on your page and posts organically.</p>
+          <h3>REACH & VIDEO VIEWS</h3>
+          <p>Increase post reach and video views so more people actually see your content.</p>
         </div>
         <div class="service-card">
           <div class="service-icon">🛡</div>
-          <h3>STEALTH MODE</h3>
-          <p>Safe and strategic boosting methods designed to look natural and avoid detection.</p>
+          <h3>STEALTH GROWTH</h3>
+          <p>Safe delivery speed and natural patterns designed to protect your page from flags.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">📈</div>
+          <h3>PAGE AUTHORITY</h3>
+          <p>Build trust signals so your page looks established and more people engage organically.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🎯</div>
+          <h3>CUSTOM CAMPAIGNS</h3>
+          <p>Tailored boost plans based on your niche, goals, and current page size.</p>
         </div>
       </div>
     </section>
 
-    <section id="boost">
-      <h2 class="section-title">BOOST PANEL</h2>
+    <section id="process" class="fade-up">
+      <div class="section-header">
+        <div class="eyebrow">// How It Works</div>
+        <h2>Simple Process</h2>
+        <p>From message to results in a few clear steps</p>
+      </div>
+      <div class="process-grid">
+        <div class="process-step">
+          <h4>MESSAGE ME</h4>
+          <p>Tell me your page link, goals, and what you want to boost.</p>
+        </div>
+        <div class="process-step">
+          <h4>CHOOSE PACKAGE</h4>
+          <p>We pick the best plan or create a custom package for your needs.</p>
+        </div>
+        <div class="process-step">
+          <h4>START BOOST</h4>
+          <p>Delivery begins with safe speed and natural growth patterns.</p>
+        </div>
+        <div class="process-step">
+          <h4>SEE RESULTS</h4>
+          <p>Watch your reach, engagement, and page strength improve.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="fade-up">
+      <div class="section-header">
+        <div class="eyebrow">// Features</div>
+        <h2>Why Clients Choose This Service</h2>
+        <p>Built for real growth and long-term page health</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature">
+          <div class="feature-icon">🔒</div>
+          <div>
+            <h4>SAFE DELIVERY</h4>
+            <p>Gradual and natural boost patterns to reduce risk of restrictions.</p>
+          </div>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">⚡</div>
+          <div>
+            <h4>FAST START</h4>
+            <p>Orders can start quickly after confirmation and payment.</p>
+          </div>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">📊</div>
+          <div>
+            <h4>REAL ENGAGEMENT LOOK</h4>
+            <p>Focus on activity that helps the algorithm treat your page better.</p>
+          </div>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">💬</div>
+          <div>
+            <h4>DIRECT SUPPORT</h4>
+            <p>Easy communication. Updates and adjustments when needed.</p>
+          </div>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🎯</div>
+          <div>
+            <h4>GOAL BASED</h4>
+            <p>Packages adjusted for small pages, growing brands, or bigger campaigns.</p>
+          </div>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">♻️</div>
+          <div>
+            <h4>REFILL SUPPORT</h4>
+            <p>Refill options available on selected services if drops happen within the period.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="packages" class="fade-up">
+      <div class="section-header">
+        <div class="eyebrow">// Packages</div>
+        <h2>Boost Packages</h2>
+        <p>Choose a plan or message me for a custom quote</p>
+      </div>
+      <div class="packages-grid">
+        <div class="package">
+          <h3>STARTER</h3>
+          <div class="price">₱499 <span>/ start</span></div>
+          <p class="desc">Best for new or small pages</p>
+          <ul>
+            <li>Page likes boost</li>
+            <li>Post engagement</li>
+            <li>Stealth delivery</li>
+            <li>Basic support</li>
+          </ul>
+          <a href="https://www.facebook.com/JOLLIBEE3MASARAP" target="_blank" class="btn btn-solid" style="width:100%;justify-content:center;">Order Starter</a>
+        </div>
+        <div class="package featured">
+          <h3>GROWTH</h3>
+          <div class="price">₱999 <span>/ start</span></div>
+          <p class="desc">Most popular for active pages</p>
+          <ul>
+            <li>Higher page boost</li>
+            <li>Multiple post boosts</li>
+            <li>Reach and views</li>
+            <li>Priority support</li>
+            <li>Stealth mode</li>
+          </ul>
+          <a href="https://www.facebook.com/JOLLIBEE3MASARAP" target="_blank" class="btn btn-solid" style="width:100%;justify-content:center;">Order Growth</a>
+        </div>
+        <div class="package">
+          <h3>PRO</h3>
+          <div class="price">₱1,999 <span>/ start</span></div>
+          <p class="desc">For serious page scaling</p>
+          <ul>
+            <li>Full growth plan</li>
+            <li>High engagement pack</li>
+            <li>Custom strategy</li>
+            <li>Priority updates</li>
+            <li>Best value for scaling</li>
+          </ul>
+          <a href="https://www.facebook.com/JOLLIBEE3MASARAP" target="_blank" class="btn btn-solid" style="width:100%;justify-content:center;">Order Pro</a>
+        </div>
+      </div>
+      <p style="text-align:center;margin-top:24px;color:var(--text-muted);font-size:0.88rem;">
+        Prices are sample starting rates. Message for exact package details and current promos.
+      </p>
+    </section>
+
+    <section id="boost" class="fade-up">
+      <div class="section-header">
+        <div class="eyebrow">// System Access</div>
+        <h2>Boost Panel</h2>
+        <p>Order boost services through the official panel</p>
+      </div>
       <div class="boost-panel">
-        <h3>⚡ ACCESS BOOST SYSTEM</h3>
+        <h3>Access the Boost System</h3>
         <p>
-          Dito pupunta ang clients para mag-order ng boost services.
-          I-click ang button sa baba para pumunta sa official boosting site.
+          Clients can place orders through the Boost Panel.
+          Prefer to discuss first? Message me directly for custom packages and current rates.
         </p>
         <div class="btn-group">
-          <a href="https://www.facebook.com/share/1DK23Vv417/" target="_blank" class="btn btn-primary">
-            ▶ OPEN BOOST PANEL
-          </a>
-          <a href="https://www.facebook.com/JOLLIBEE3MASARAP" target="_blank" class="btn btn-cyan">
-            💬 MESSAGE ME FIRST
-          </a>
+          <a href="https://www.facebook.com/share/1DK23Vv417/" target="_blank" class="btn btn-solid">Open Boost Panel</a>
+          <a href="https://www.facebook.com/JOLLIBEE3MASARAP" target="_blank" class="btn btn-cyan">Message Me First</a>
         </div>
       </div>
     </section>
 
-    <section id="about">
-      <h2 class="section-title">SYSTEM LOG // ABOUT</h2>
-      <div class="about-content">
+    <section class="fade-up">
+      <div class="guarantee-box">
+        <h3>Growth Focused · Stealth Delivery</h3>
         <p>
-          <span class="highlight">>_</span> Ako si <span class="highlight">Willy Magusib</span> — social media booster na focused sa real results.
+          Every order is handled with care for page safety and natural-looking results.
+          Message me if you need a custom plan for your niche or campaign.
         </p>
-        <p>
-          Hindi lang puro numbers. Ang goal ay <span class="highlight">growth na may quality</span> — para mas makita ang page mo,
-          mas madaming mag-engage, at mas solid ang presence mo online.
-        </p>
-        <p>
-          Whether starting ka pa lang or gusto mo na i-level up ang existing page, ready akong i-deploy ang boost protocol.
-        </p>
-        <p>
-          <span class="highlight">Personal Account:</span>
-          <a href="https://www.facebook.com/JOLLIBEE3MASARAP" target="_blank" style="color: var(--cyan);">
-            facebook.com/JOLLIBEE3MASARAP
-          </a>
-        </p>
-        <p>
-          <span class="highlight">Boost Page:</span>
-          <a href="https://www.facebook.com/share/1DK23Vv417/" target="_blank" style="color: var(--cyan);">
-            facebook.com/share/1DK23Vv417
-          </a>
-        </p>
+        <div class="btn-group">
+          <a href="https://www.facebook.com/JOLLIBEE3MASARAP" target="_blank" class="btn btn-solid">Message for Custom Plan</a>
+        </div>
       </div>
     </section>
 
-    <section id="contact" class="cta">
+    <section id="faq" class="fade-up">
+      <div class="section-header">
+        <div class="eyebrow">// FAQ</div>
+        <h2>Common Questions</h2>
+        <p>Quick answers before you order</p>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q">Is the boost safe for my page? <span>+</span></button>
+          <div class="faq-a">Yes. Delivery uses controlled speed and natural patterns to help protect your page.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">How fast will I see results? <span>+</span></button>
+          <div class="faq-a">Most orders start shortly after confirmation. Exact speed depends on the package size.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Can I request a custom package? <span>+</span></button>
+          <div class="faq-a">Yes. Message me with your page link and goals so we can build a plan that fits your needs.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Do you support small pages? <span>+</span></button>
+          <div class="faq-a">Yes. Starter packages are available for new and small pages that want to build momentum.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">How do I order? <span>+</span></button>
+          <div class="faq-a">Message me on Facebook, send your page link, choose a package, or open the Boost Panel to proceed.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="fade-up">
+      <div class="section-header">
+        <div class="eyebrow">// Feedback</div>
+        <h2>Client Results</h2>
+        <p>What people say after working with me</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial">
+          <p>Solid service. Page engagement went up and posts started getting more reach. Recommended.</p>
+          <div class="author">Page Owner<span>Facebook Business Page</span></div>
+        </div>
+        <div class="testimonial">
+          <p>Fast and clean. The growth looked natural, not obvious. Will order again.</p>
+          <div class="author">Content Creator<span>Personal Brand</span></div>
+        </div>
+        <div class="testimonial">
+          <p>Good communication and clear process. Helped our small page get more visibility quickly.</p>
+          <div class="author">Small Business<span>Local Shop Page</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="cta-section fade-up">
       <div class="cta-box">
-        <h2>READY TO BOOST?</h2>
-        <p>I-message mo ako sa Facebook para sa rates at available packages.</p>
+        <h2>Ready to Grow Your Page?</h2>
+        <p>Message me now for rates, available packages, and the best plan for your page.</p>
         <div class="btn-group">
-          <a href="https://www.facebook.com/JOLLIBEE3MASARAP" target="_blank" class="btn btn-primary">
-            ▶ MESSAGE ME
-          </a>
-          <a href="https://www.facebook.com/share/1DK23Vv417/" target="_blank" class="btn btn-cyan">
-            📄 VISIT BOOST PAGE
-          </a>
-          <a href="#boost" class="btn btn-danger">
-            ⚡ GO TO BOOST PANEL
-          </a>
+          <a href="https://www.facebook.com/JOLLIBEE3MASARAP" target="_blank" class="btn btn-solid">Message Willy</a>
+          <a href="#boost" class="btn btn-cyan">Open Boost Panel</a>
         </div>
       </div>
     </section>
 
     <footer>
-      <p>
-        WILLY MAGUSIB // BOOST PROTOCOL &nbsp;|&nbsp;
+      <div class="links">
         <a href="https://www.facebook.com/JOLLIBEE3MASARAP" target="_blank">Personal FB</a>
-        &nbsp;|&nbsp;
         <a href="https://www.facebook.com/share/1DK23Vv417/" target="_blank">Boost Page</a>
-        &nbsp;|&nbsp; System Online
-      </p>
-      <p style="margin-top: 8px; font-size: 0.75rem;">© 2026 — All systems operational</p>
+        <a href="#boost">Boost Panel</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <p>WILLY MAGUSIB · Facebook Boost Services</p>
+      <p style="margin-top:6px;font-size:0.74rem;opacity:0.7;">© 2026 · All systems operational</p>
     </footer>
   </div>
 
   <script>
     const canvas = document.getElementById('matrix');
     const ctx = canvas.getContext('2d');
-
+    const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
+    const fontSize = 14;
+    let drops = [];
     function resize() {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
@@ -709,37 +1160,45 @@
     }
     resize();
     window.addEventListener('resize', resize);
-
-    const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
-    const fontSize = 14;
-    let drops = Array(Math.floor(canvas.width / fontSize)).fill(1);
-
     function draw() {
-      ctx.fillStyle = 'rgba(10, 10, 10, 0.05)';
+      ctx.fillStyle = 'rgba(5,5,5,0.05)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
-
       ctx.fillStyle = '#00ff41';
       ctx.font = fontSize + 'px monospace';
-
       for (let i = 0; i < drops.length; i++) {
-        const text = chars[Math.floor(Math.random() * chars.length)];
-        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
-        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-          drops[i] = 0;
-        }
+        const t = chars[Math.floor(Math.random() * chars.length)];
+        ctx.fillText(t, i * fontSize, drops[i] * fontSize);
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
         drops[i]++;
       }
     }
     setInterval(draw, 40);
 
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        const t = document.querySelector(a.getAttribute('href'));
+        if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+
+    const fadeEls = document.querySelectorAll('.fade-up');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(en => {
+        if (en.isIntersecting) {
+          en.target.classList.add('visible');
+          io.unobserve(en.target);
         }
+      });
+    }, { threshold: 0.12 });
+    fadeEls.forEach(el => io.observe(el));
+
+    document.querySelectorAll('.faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        const wasOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!wasOpen) item.classList.add('open');
       });
     });
   </script>
